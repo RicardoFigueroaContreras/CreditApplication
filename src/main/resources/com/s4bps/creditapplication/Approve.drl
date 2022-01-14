@@ -1,0 +1,15 @@
+package com.s4bps.creditapplication;
+
+import com.s4bps.creditapplication.model.Applicant;
+
+rule "approve applicants"
+
+no-loop
+
+when
+    $a: Applicant(age > 30, money > 1000, approved == false)
+then
+    modify ($a) {
+        setApproved(true);
+    }
+end
